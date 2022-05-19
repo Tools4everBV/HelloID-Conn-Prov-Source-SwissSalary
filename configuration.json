@@ -1,0 +1,57 @@
+[
+    {
+      "key": "clientid",
+      "type": "input",
+      "defaultValue": "",
+      "templateOptions": {
+        "label": "Client ID",
+        "placeholder": "Enter the Client ID",
+        "description": "",
+        "required": true
+      }
+    },
+    {
+      "key": "clientsecret",
+      "type": "input",
+      "defaultValue": "",
+      "templateOptions": {
+        "label": "Client Secret",
+        "placeholder": "Enter the Client Secret",
+        "type": "password",
+        "required": true
+      }
+    },
+    {
+      "key": "tenantid",
+      "type": "input",
+      "defaultValue": "",
+      "templateOptions": {
+        "label": "Tenant ID",
+        "placeholder": "Enter the Tenant ID",
+        "description": "",
+        "required": true
+      }
+    },
+    {
+      "key": "companyid",
+      "type": "input",
+      "defaultValue": "",
+      "templateOptions": {
+        "label": "Company ID",
+        "placeholder": "Enter the Company ID",
+        "description": "",
+        "required": true
+      }
+    },
+    {
+      "key": "environmentName",
+      "type": "input",
+      "defaultValue": "",
+      "templateOptions": {
+        "label": "Environment name",
+        "placeholder": "Enter the Environment name",
+        "description": "",
+        "required": true
+      }
+    }
+  ]
