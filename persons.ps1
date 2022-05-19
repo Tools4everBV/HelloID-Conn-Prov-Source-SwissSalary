@@ -5,14 +5,14 @@ $header = [ordered]@{
 }
 
 $body = "scope=https%3A%2F%2Fapi.businesscentral.dynamics.com%2F.default&grant_type=client_credentials&client_id=" + $c.clientid + "&client_secret=" + $c.clientsecret
-$response = Invoke-RestMethod 'https://login.microsoftonline.com/95806b3e-1cff-4894-8beb-f0b0302988a0/oauth2/v2.0/token' -Method 'POST' -Body $body
+$response = Invoke-RestMethod 'https://login.microsoftonline.com/" + $c.tenantid + "/oauth2/v2.0/token' -Method 'POST' -Body $body
 $accessToken = $response.access_token
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer " + $accessToken)
 
 # Get companies
-$uri_companies = 'https://api.businesscentral.dynamics.com/v2.0/95806b3e-1cff-4894-8beb-f0b0302988a0/Production/api/swisssalary/swisssalary365/v1.0/companies';
+$uri_companies = 'https://api.businesscentral.dynamics.com/v2.0/" + $c.tenantid + "/Production/api/swisssalary/swisssalary365/v1.0/companies';
 $response_companies = Invoke-RestMethod $uri_companies -Method 'GET' -Headers $headers;
 $companies = $response_companies.value;
 
@@ -22,7 +22,7 @@ foreach ($company in $companies)
 {
     $company_id = $company.id;
 
-    $uri = 'https://api.businesscentral.dynamics.com/v2.0/95806b3e-1cff-4894-8beb-f0b0302988a0/Production/api/swisssalary/swisssalary365/v1.0/companies(' + $company_id + ')/employees';
+    $uri = 'https://api.businesscentral.dynamics.com/v2.0/" + $c.tenantid + "/Production/api/swisssalary/swisssalary365/v1.0/companies(' + $company_id + ')/employees';
     
     $response = Invoke-RestMethod $uri -Method 'GET' -Headers $headers;
     $employees_of_company = $response.value;
